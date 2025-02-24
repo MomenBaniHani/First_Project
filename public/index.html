@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <meta charset="utf-8" />
+    <title>File Manger</title>
+  </head>
+  <body>
+    <h1>File Manager</h1>
+
+    <section>
+      <h2>Read File</h2>
+      <input type="text" id="readFileName" placeholder="Enter File Name" />
+      <button onclick="readFile()">Read File</button>
+      <pre id="readContent"></pre>
+    </section>
+
+    <section>
+      <h2>Write File</h2>
+      <input type="text" id="writeFileName" placeholder="Enter File Name" />
+      <textarea id="writeContent" placeholder="Enter The Content"></textarea>
+      <button onclick="writeFile()">Write File</button>
+    </section>
+
+    <section>
+      <h2>Append File</h2>
+      <input type="text" id="appendFileName" placeholder="Enter File Name" />
+      <textarea id="appendContent" placeholder="Enter The Content"></textarea>
+      <button onclick="appendFile()">Append File</button>
+    </section>
+
+    <section>
+      <h2>Delete File</h2>
+      <input type="text" id="deleteFileName" placeholder="Enter File Name" />
+      <button onclick="deleteFile()">Delete File</button>
+    </section>
+
+    <section>
+      <h2>Rename File</h2>
+      <input
+        type="text"
+        id="oldFileName"
+        placeholder="Enter Current File Name"
+      />
+      <input type="text" id="newFileName" placeholder="Enter New File Name" />
+      <button onclick="renameFile()">Rename File</button>
+    </section>
+
+    <section>
+      <h2>Create Directory</h2>
+      <input
+        type="text"
+        id="createDirName"
+        placeholder="Enter Directory Name"
+      />
+      <button onclick="createDirectory()">Create Directory</button>
+    </section>
+
+    <section>
+      <h2>Delete Directory</h2>
+      <input
+        type="text"
+        id="deleteDirName"
+        placeholder="Enter Directory Name"
+      />
+      <button onclick="deleteDirectory()">Delete Directory</button>
+    </section>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>

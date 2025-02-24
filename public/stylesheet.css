@@ -1,0 +1,78 @@
+/* تنسيق عام للصفحة */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  h2 {
+    color: #444;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* تنسيق الإدخالات والأزرار */
+  input, textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block;
+  }
+  
+  button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  /* تنسيق صندوق عرض المحتوى */
+  pre {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 14px;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* تحسين التجاوب */
+  @media (max-width: 600px) {
+    section {
+      max-width: 90%;
+    }
+  }
+  
