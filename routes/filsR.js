@@ -6,9 +6,16 @@ const router = express.Router(); // like app.get  but router Organizes tracks be
 
 //// Helper function to get absolute file path (prevents path traversal attacks)
 //// هاي الدالة بترجع المسار الكامل للملف جوّا مجلد التخزين بطريقة آمنة
-const getFilePath = (fileName) =>
+/*const getFilePath = (fileName) =>
   path.join(__dirname, "..", "storage", path.basename(fileName));
-
+*/
+const pdfF = (fileName) => fileName.endsWith(".pdf");
+const getFilePath = (fileName) => {
+  if (!pdfF(fileName)) {
+    return console.log("Error not pdf");
+  }
+  return path.join(__dirname, "..", "storage", path.basename(fileName));
+}; //just pdf
 //GET
 router.get("/read", async (req, res) => {
   try {
@@ -21,6 +28,11 @@ router.get("/read", async (req, res) => {
 
 //POST WRITE
 router.post("/write", async (req, res) => {
+  const filePath = getFilePath(req.body.fileName); //for just pdf
+
+  if (!filePath) {
+    return res.status(400).json({ error: "Only PDF files can be written." }); //just pdf
+  }
   try {
     await fs.writeFile(
       getFilePath(req.body.fileName),
@@ -38,7 +50,13 @@ router.post("/write", async (req, res) => {
 //POST APPEND
 router.post("/append", async (req, res) => {
   const { fileName, content } = req.body;
+  const filePath = getFilePath(req.body.fileName); //pdf
+
+  if (!filePath) {
+    return res.status(400).json({ error: "Only PDF files can be appended." });
+  } //pdf
   try {
+    await fs.access(filePath); //pdf
     await fs.appendFile(getFilePath(fileName), content, "utf-8");
     res.json({ message: "Content Apend Sucessfuly" });
   } catch (err) {
@@ -104,6 +122,5 @@ router.delete("/delete", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-module.exports = router;//// تصدير كائن الراوتر حتى نقدر نستدعيه واستخدامه في ملفات ثانية مثل server.js
+module.exports = router; //// تصدير كائن الراوتر حتى نقدر نستدعيه واستخدامه في ملفات ثانية مثل server.js
 //يعني عشان اقدر استخدمه بملفات ثانيه
-
